@@ -3,10 +3,7 @@ package com.vn.JobFinder.Controller;
 
 import com.vn.JobFinder.Service.AuthService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -21,10 +18,10 @@ public class AuthController {
     //Đăng ký tài khoản
     @PostMapping("/register")
     public ResponseEntity<String> register(
-            @RequestParam String username,
-            @RequestParam String password,
-            @RequestParam String email,
-            @RequestParam String phoneNumber) {
+            @RequestBody String username,
+            @RequestBody String password,
+            @RequestBody String email,
+            @RequestBody String phoneNumber) {
         String message = authService.register(username, password, email, phoneNumber);
         return ResponseEntity.ok(message);
     }
