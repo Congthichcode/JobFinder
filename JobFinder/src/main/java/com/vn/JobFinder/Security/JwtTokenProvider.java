@@ -38,6 +38,13 @@ public class JwtTokenProvider {
 
     //  Lấy username từ token
     public String getUsername(String token) {
+
+        String testToken = Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
         return Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build()

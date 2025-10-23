@@ -24,6 +24,7 @@ public class AuthService {
         user.setPassword(encoder.encode(password));
         user.setEmail(email);
         user.setPhoneNumber(phoneNumber);
+        userRepository.save(user);
         return "Đăng ký thành công!";
     }
 

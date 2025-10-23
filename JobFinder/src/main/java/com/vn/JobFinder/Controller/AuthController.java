@@ -1,6 +1,7 @@
 package com.vn.JobFinder.Controller;
 
 
+import com.vn.JobFinder.DTO.Request.RegisterDTO;
 import com.vn.JobFinder.Service.AuthService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,11 +19,10 @@ public class AuthController {
     //Đăng ký tài khoản
     @PostMapping("/register")
     public ResponseEntity<String> register(
-            @RequestBody String username,
-            @RequestBody String password,
-            @RequestBody String email,
-            @RequestBody String phoneNumber) {
-        String message = authService.register(username, password, email, phoneNumber);
+            @RequestBody
+            RegisterDTO dto
+    ) {
+        String message = authService.register(dto.username, dto.password, dto.email, dto.phoneNumber);
         return ResponseEntity.ok(message);
     }
 
